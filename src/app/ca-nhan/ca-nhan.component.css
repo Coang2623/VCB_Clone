@@ -1,0 +1,95 @@
+@media screen and (min-width: 1400px) {
+  .col-xxl-8 {
+      min-width: 80rem !important;
+  }
+}
+
+.main-section{
+  height: 100%;
+  width: 100%;
+  top:0;
+  z-index: -1 !important;
+}
+
+.main-container .col-4{
+  position: absolute;
+  top: 35%;
+}
+
+
+.greeting{
+  font-family: "Manrope SemiBold", sans-serif;
+  align-items: center;
+  min-width: 25rem !important;
+}
+
+.search{
+  background-color: white;
+  border-radius: 2rem;
+
+  .search-icon{
+      margin-top: .2rem !important;
+      padding: .5rem 0rem .5rem 1.2rem !important;
+  }
+
+  .search-icon i{
+      margin-right: 1rem;
+      font-size: 1.4rem;
+  }
+
+  input{
+      background: none;
+      border: none;
+  }
+
+  input:focus{
+      background: none;
+      border: none;
+      box-shadow: none;
+  }
+}
+
+.suggestion-container{
+  position: absolute;
+  width: 100%;
+  max-width: 80rem;
+  bottom: 2rem;
+  height: fit-content;
+  background-color: white;
+  font-family: "Manrope SemiBold", sans-serif;
+  border-radius: 2.5rem;
+  z-index: 1000000 !important;
+
+  td{
+      width: 20% !important;
+  }
+
+  .border-secondary{
+      border-color: #f2f2f2 !important;
+  }
+
+  .suggestion-item:first-child{
+      border-top-left-radius: 2.5rem;
+      border-bottom-left-radius: 2.5rem;
+  }
+
+  .suggestion-item:last-child{
+      border-top-right-radius: 2.5rem;
+      border-bottom-right-radius: 2.5rem;
+  }
+
+  .suggestion-item .suggestion-icon{
+      transition: transform 0.3s ease;
+  }
+
+  .suggestion-item:hover{
+      background: linear-gradient(343deg, #eaf6ff 0, #f3ffe9 100%);
+
+      .suggestion-icon{
+          transform: translateY( -5px);
+      }
+  }
+}
+
+
+

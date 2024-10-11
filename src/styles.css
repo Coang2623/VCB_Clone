@@ -1,1 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+
+:root{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    --text-hover-color: #074c31;
+    height: 100%;
+}
+
+body{
+    background-image: url(../public/imgs/BANNER-WEB-1920X1080\ anh\ tinh.webp);
+    background-size: cover; /* Đảm bảo hình ảnh phủ đầy chiều ngang */
+    background-position: center center; /* Căn giữa theo cả chiều ngang và dọc */
+    background-repeat: no-repeat; /* Không lặp lại hình ảnh */
+    background-attachment: fixed;
+    color: #000;
+    font-family: Manrope, sans-serif;
+    font-size: 1rem;
+    line-height: 1.5;
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+}
