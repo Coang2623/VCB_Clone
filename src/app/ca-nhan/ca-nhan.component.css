@@ -4,6 +4,27 @@
   }
 }
 
+@media screen and (max-width: 62rem) {
+  .suggestion-container{
+    border-radius: 0 !important;
+    border-top-left-radius: 1rem !important;
+    border-top-right-radius: 1rem !important;
+    bottom: 0 !important;
+  }
+
+  .suggestion-item{
+    vertical-align: top;
+  }
+
+  .main-container .col-lg-4{
+    padding: 0 1.5rem;
+  }
+
+  .main-container .col-lg-4{
+    top: 66% !important;
+  }
+}
+
 .main-section{
   height: 100%;
   width: 100%;
@@ -11,19 +32,45 @@
   z-index: -1 !important;
 }
 
-.main-container .col-4{
+.main-container .col-lg-4{
   position: absolute;
-  top: 35%;
+  top: 40%;
 }
 
 
 .greeting{
   font-family: "Manrope SemiBold", sans-serif;
   align-items: center;
-  min-width: 25rem !important;
 }
 
 .search{
+  background-color: white;
+  border-radius: 2rem;
+
+  .search-icon{
+      margin-top: .2rem !important;
+      padding: .5rem 0rem .5rem 1.2rem !important;
+  }
+
+  .search-icon i{
+      margin-right: 1rem;
+      font-size: 1.4rem;
+  }
+
+  input{
+      background: none;
+      border: none;
+  }
+
+  input:focus{
+      background: none;
+      border: none;
+      box-shadow: none;
+  }
+}
+
+.search-sm{
+  display: flex;
   background-color: white;
   border-radius: 2rem;
 

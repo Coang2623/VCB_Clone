@@ -95,6 +95,22 @@
       float: left;
       padding: 1.375rem 0 .25rem 0 !important;
       margin-left: 1.25rem;
+      position: relative;
+  }
+
+  .main-navigation ul li a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -1rem;
+    width: 0;
+    height: 2px;
+    background-color: #a7bf50;
+    transition: width 0.5s ease;
+  }
+
+  .main-navigation ul li a:hover::after {
+    width: 100%
   }
 
   .navbar-right-btn .nav-btn{
@@ -110,5 +126,17 @@
       line-height: 1.5rem;
       letter-spacing: -.02em;
       border-radius: 8px;
+      order: 1;
+  }
+
+  .navbar-toggler{
+    order: 2;
+    background-color: #475260;
+    border: none;
+
+    .navbar-toggler-icon{
+      color: white !important;
+      font-weight: bold;
+    }
   }
 }

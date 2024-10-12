@@ -20,6 +20,16 @@
   z-index: -1; /* Đặt video ở phía sau các phần tử khác */
 }
 
+.overlay{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2); /* Màu đen mờ, điều chỉnh độ trong suốt tại đây */
+  z-index: -1; /* Lớp phủ nằm trên video */
+}
+
 body{
     /*background-image: url(../public/imgs/BANNER-WEB-1920X1080\ anh\ tinh.webp);
     /*background-size: cover; /* Đảm bảo hình ảnh phủ đầy chiều ngang */
