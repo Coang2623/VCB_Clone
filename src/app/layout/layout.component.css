@@ -5,6 +5,23 @@
   }
 }
 
+.mega-menu-open {
+  background-color: white !important;
+  color: black !important;
+
+  a{
+    color: black !important;
+  }
+
+  .phone-btn{
+    background-color: #dde1e1 !important;
+  }
+
+  .top-secondary a:hover{
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), linear-gradient(343deg, #EAF6FF 0%, #F3FFE9 100%);
+  }
+}
+
 
 .top-secondary{
   z-index: 99999 !important;
@@ -102,11 +119,13 @@
     content: '';
     position: absolute;
     left: 0;
-    bottom: -1rem;
+    bottom: -.8rem;
     width: 0;
-    height: 2px;
+    height: 3px;
+    border-radius: 2px;
     background-color: #a7bf50;
     transition: width 0.5s ease;
+    z-index: 1000;
   }
 
   .main-navigation ul li a:hover::after {
@@ -140,3 +159,4 @@
     }
   }
 }
+

@@ -1,4 +1,4 @@
-<div class="navbar-section row">
+<div class="navbar-section row" [ngClass]="{ 'mega-menu-open': isOpen }">
   <div class="navbar-container col-xxl-8 col-xl-12 mx-auto px-5 px-xxl-0">
     <div class="top-secondary row d-xl-block d-none">
       <nav class="navbar navbar-expand-md bg-none py-1">
@@ -85,7 +85,7 @@
           <div class="d-flex">
             <a class="navbar-brand" href="#">
               <img
-                src="./imgs/VCB Logo white.png"
+                src="./imgs/Logo VCB no 60.webp"
                 class="d-inline-block align-top"
                 alt="Vietcombank"
               />
@@ -94,17 +94,17 @@
             <div class="main-navigation d-xl-block d-none" id="navbarText">
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                  <a class="nav-link" aria-current="page" href="#"
+                  <a class="nav-link" aria-current="page" href="#" (click)="changeLevel2('1')"
                     >Sản phẩm & dịch vụ <i class="bi bi-chevron-down ms-2"></i
                   ></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#"
+                  <a class="nav-link" href="#" (click)="changeLevel2('2')"
                     >Công cụ & Tiện ích <i class="bi bi-chevron-down ms-2"></i
                   ></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#"
+                  <a class="nav-link" href="#" (click)="changeLevel2('3')"
                     >Liên hệ & Hỗ trợ <i class="bi bi-chevron-down ms-2"></i
                   ></a>
                 </li>
@@ -131,7 +131,8 @@
               aria-controls="navbarText"
               aria-expanded="false"
               aria-label="Toggle navigation"
-              style="color: #074c31;">
+              style="color: #074c31"
+            >
               <span class="navbar-toggler-icon"></span>
             </button>
           </div>
@@ -140,5 +141,8 @@
     </div>
   </div>
 </div>
+
+<!-- Mega Menu -->
+<app-nav-level-2></app-nav-level-2>
 
 <app-ca-nhan></app-ca-nhan>

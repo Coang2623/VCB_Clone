@@ -105,7 +105,7 @@
   background-color: white;
   font-family: "Manrope SemiBold", sans-serif;
   border-radius: 2.5rem;
-  z-index: 1000000 !important;
+  z-index: 10 !important;
 
   td{
       width: 20% !important;

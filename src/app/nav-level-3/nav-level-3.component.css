@@ -1,0 +1,40 @@
+.promotion-img img{
+  object-fit: cover;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  border-radius: 10px;
+}
+
+.promotion-img-tittle{
+  font-weight: 600;
+  padding: 1rem 0 2rem 0;
+  font-size: 1.1rem;
+}
+
+ul{
+  padding-top: .5rem !important;
+  padding-left: 0;
+  list-style-type: none;
+  width: 100%;
+
+  .level-3{
+    border-radius: 8px;
+    padding: 1rem;
+  }
+
+  .level-3 a{
+    text-decoration: none;
+    display: block;
+    color: rgba(0, 0, 0, .8);
+    font-family: "Manrope Medium", sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.125rem;
+    line-height: 1.5rem;
+  }
+
+  .level-3:hover{
+    background: linear-gradient(343deg, #eaf6ff 0, #f3ffe9 100%) !important;
+    width: 100%;
+  }
+}

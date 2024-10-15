@@ -1,0 +1,118 @@
+@switch (level_2.case) { @case ('1') { @if (level_2.isShow) {
+<div class="mega-menu-section p-0 m-0 d-md-block d-none">
+  <div class="container col-xxl-8 col-xl-12 p-0 m-0 mx-auto">
+    <div class="row m-0 p-0 d-flex">
+      <div class="col-4">
+        <ul>
+          <li
+            class="level-2"
+            (mouseover)="changeLevel3('2')"
+            (mouseout)="changeLevel3('1')"
+          >
+            <a href="#">Dịch vụ tài khoản</a>
+          </li>
+          <li
+            class="level-2"
+            (mouseover)="changeLevel3('3')"
+            (mouseout)="changeLevel3('1')"
+          >
+            <a href="#">Ngân hàng số</a>
+          </li>
+          <li class="level-2" (mouseover)="changeLevel3('4')">
+            <a href="#">Thẻ</a>
+          </li>
+          <li class="level-2" (mouseover)="changeLevel3('5')">
+            <a href="#">Vay</a>
+          </li>
+          <li class="level-2" (mouseover)="changeLevel3('1')">
+            <a href="#">Tiết kiệm</a>
+          </li>
+          <li class="level-2" (mouseover)="changeLevel3('6')">
+            <a href="#">Bảo hiểm</a>
+          </li>
+          <li class="level-2" (mouseover)="changeLevel3('1')">
+            <a href="#">Đầu tư</a>
+          </li>
+          <li class="level-2" (mouseover)="changeLevel3('1')">
+            <a href="#">Chuyển và nhận tiền</a>
+          </li>
+        </ul>
+      </div>
+      <app-nav-level-3
+        class="col-8 promotion px-5 m-0 p-0"
+        (mouseleave)="changeLevel3('1')"
+      ></app-nav-level-3>
+    </div>
+  </div>
+</div>
+} } @case ('2') { @if (level_2.isShow) {
+<div class="mega-menu-section p-0 m-0 d-md-block d-none">
+  <div class="container col-xxl-8 col-xl-12 p-0 m-0 mx-auto">
+    <div class="row m-0 p-0">
+      <div class="col-4">
+        <ul>
+          <li
+            class="level-2"
+            (mouseover)="changeLevel3('2')"
+            (mouseout)="changeLevel3('1')"
+          >
+            <a href="#">Tỷ giá ngoại tệ</a>
+          </li>
+          <li class="level-2"><a href="#">Giá vàng</a></li>
+          <li class="level-2"><a href="#">Lãi suất</a></li>
+          <li class="level-2"><a href="#">Biểu mẫu & Biểu phí</a></li>
+          <li class="level-2"><a href="#">Tính lịch trả nợ</a></li>
+        </ul>
+      </div>
+      <app-nav-level-3 class="col-8 promotion px-5 m-0 p-0"></app-nav-level-3>
+    </div>
+  </div>
+</div>
+} } @case ('3') { @if (level_2.isShow) {
+<div class="mega-menu-section p-0 m-0 d-md-block d-none">
+  <div class="container col-xxl-8 col-xl-12 p-0 m-0 mx-auto">
+    <div class="row m-0 p-0">
+      <div class="col-4">
+        <ul>
+          <li
+            class="level-2"
+            (mouseover)="changeLevel3('1')"
+            (mouseout)="changeLevel3('1')"
+          >
+            <a href="#">Đặt lịch hẹn</a>
+          </li>
+          <li
+            class="level-2"
+            (mouseover)="changeLevel3('1')"
+            (mouseout)="changeLevel3('1')"
+          >
+            <a href="#">Liên hệ</a>
+          </li>
+          <li
+            class="level-2"
+            (mouseover)="changeLevel3('1')"
+            (mouseout)="changeLevel3('1')"
+          >
+            <a href="#">Lãi suất</a>
+          </li>
+          <li
+            class="level-2"
+            (mouseover)="changeLevel3('1')"
+            (mouseout)="changeLevel3('1')"
+          >
+            <a href="#">Câu hỏi thường gặp</a>
+          </li>
+          <li
+            class="level-2"
+            (mouseover)="changeLevel3('1')"
+            (mouseout)="changeLevel3('1')"
+          >
+            <a href="#">Hướng dẫn sử dụng</a>
+          </li>
+        </ul>
+      </div>
+      <app-nav-level-3 class="col-8 promotion px-5 m-0 p-0"></app-nav-level-3>
+    </div>
+  </div>
+</div>
+} } }
