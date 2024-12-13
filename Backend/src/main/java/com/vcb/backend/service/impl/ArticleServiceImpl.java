@@ -9,6 +9,7 @@ import com.vcb.backend.mapper.ArticleMapper;
 import com.vcb.backend.repository.ArticleRepository;
 import com.vcb.backend.repository.ArticleSpecification;
 import com.vcb.backend.service.ArticleService;
+import com.vcb.backend.service.AuthenticationService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,9 @@ import org.springframework.stereotype.Service;
 @Slf4j
 @Service
 public class ArticleServiceImpl implements ArticleService {
+
+  @Autowired
+  private AuthenticationService authenticationService;
 
   @Autowired
   private ArticleRepository articleRepository;
@@ -94,7 +98,7 @@ public class ArticleServiceImpl implements ArticleService {
   }
 
   /**
-   * Method to  new article
+   * Method to create new article
    * @param articleDto - articleDto with create info
    * @return - article with full info
    */
@@ -110,6 +114,9 @@ public class ArticleServiceImpl implements ArticleService {
     articleMapper.toCreateArticle(article, articleDto);
 
     article.setArticleStatus(ArticleStatusEnum.HIDDEN);
+
+    article.setArticleCreatedBy(authenticationService.getUsernameFromToken());
+    article.setArticleUpdatedBy(authenticationService.getUsernameFromToken());
 
     return articleMapper.toArticleDtoFullInfo(articleRepository.save(article));
   }
@@ -128,6 +135,8 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     articleMapper.toUpdateArticle(article, articleDto);
+
+    article.setArticleUpdatedBy(authenticationService.getUsernameFromToken());
 
     return articleMapper.toArticleDtoFullInfo(articleRepository.save(article));
   }

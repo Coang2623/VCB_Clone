@@ -8,21 +8,20 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @SpringBootTest
 @TestPropertySource("/test.properties")
-class UserEntityTest {
+class ArticleEntityTest {
+
   @Test
   void onCreate_shouldSetDefaultValues() {
-    User user = new User();
-    user.onCreate();
-
-    assertNotNull(user.getUserCreatedAt());
-    assertNotNull(user.getUserUpdatedAt());
+    Article article = new Article();
+    article.onCreate();
+    assertNotNull(article.getArticleCreatedAt());
+    assertNotNull(article.getArticleUpdatedAt());
   }
 
   @Test
   void onUpdate_shouldSetDefaultValues() {
-    User user = new User();
-    user.onUpdate();
-
-    assertNotNull(user.getUserUpdatedAt());
+    Article article = new Article();
+    article.onUpdate();
+    assertNotNull(article.getArticleUpdatedAt());
   }
 }
