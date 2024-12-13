@@ -1,0 +1,337 @@
+<video *ngIf="backgroundClass === 'bg-default'" class="video-bg d-none d-md-block" id="bg-video" autoplay loop muted>
+  <source src="./videos/BANNER WEB 1920X1080-1.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+<img *ngIf="backgroundClass === 'bg-default'" class="video-bg d-block d-md-none" src="./imgs/YouPro Mobile doc Viet.webp" alt="">
+
+<div *ngIf="backgroundClass === 'bg-default'" class="overlay"></div>
+
+<div class="navbar-section row" [ngClass]="{ 'mega-menu-open': isOpen || backgroundClass !== 'bg-default' }">
+  <div class="navbar-container col-xxl-8 col-xl-12 mx-auto px-5 px-xxl-0">
+    <div class="top-secondary row d-xl-block d-none">
+      <nav class="navbar navbar-expand-md bg-none py-1">
+        <div class="container-fluid px-lg-0">
+          <div class="navbar-collapse">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-links active" aria-current="page" href="#"
+                  >{{'PERSONAL_BANKING' | translate}}</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">{{'INSTITUTIONAL_BANKING' | translate}}</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">{{'PRIORITY_BANKING' | translate}}</a>
+              </li>
+            </ul>
+            <ul class="navbar-nav mb-2 mb-lg-0 nav-right">
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="#">
+                  {{'ABOUT_US' | translate}}
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">{{'NEWS' | translate}}</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">{{'INVESTORS' | translate}}</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">{{'NETWORKS' | translate}}</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">{{'CAREERS' | translate}}</a>
+              </li>
+              <li class="nav-item ms-4 me-3">
+                <a class="nav-link phone-btn" href="#"
+                  ><i class="bi bi-telephone-fill me-2"></i> 1900 545413</a
+                >
+              </li>
+              <li class="nav-item">
+                @if (language == 'vi'){
+                  <img src="./imgs/vietnam.png" alt="" (click)="langDrop = !langDrop">
+                } @else if (language == 'en'){
+                  <img src="./imgs/united-kingdom.png" alt="" (click)="langDrop = !langDrop">
+                }
+
+                @if (langDrop){
+                  <ul class="lang-list">
+                    <li class="active lang-item" (click)="switchLanguage('en'); langDrop = !langDrop" [ngClass]="{'active': this.language === 'en'}">
+                      <img src="./imgs/united-kingdom.png" alt="">
+                      <p>Eng {{''}}</p>
+                    </li>
+                    <li class="lang-item" (click)="switchLanguage('vi'); langDrop = !langDrop" [ngClass]="{'active': this.language === 'vi'}">
+                      <img src="./imgs/vietnam.png" alt="">
+                      <p>Viet</p>
+                    </li>
+                  </ul>
+                }
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <div class="top-primary row">
+      <nav class="navbar navbar-expand-md bg-none">
+        <div class="container-fluid px-lg-0">
+          <div class="d-flex">
+            <a class="navbar-brand" href="#">
+              @if (this.isOpen || backgroundClass !== 'bg-default'){
+                <img
+                  src="./imgs/Logo VCB no 60.webp"
+                  class="d-inline-block align-top me-5"
+                  alt="Vietcombank"
+                />
+              } @else {
+                <img
+                  src="./imgs/VCB Logo white.png"
+                  class="d-inline-block align-top"
+                  alt="Vietcombank"
+                />
+              }
+            </a>
+
+            <div class="main-navigation d-xl-block d-none" id="navbarText">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <span class="nav-link" aria-current="page" href="" (click)="changeLevel2('1', $event)"
+                >{{'PRODUCTS_&_SERVICES' | translate}}<i class="bi bi-chevron-down ms-2"></i
+                  ></span>
+                </li>
+                <li class="nav-item">
+                  <span class="nav-link" href="" (click)="changeLevel2('2', $event)"
+                    >{{'TOOLS_&_UTILITIES' | translate}}<i class="bi bi-chevron-down ms-2"></i
+                  ></span>
+                </li>
+                <li class="nav-item">
+                  <span class="nav-link" href="" (click)="changeLevel2('3', $event)"
+                    >{{'CONTACT_&_SUPPORT' | translate}}<i class="bi bi-chevron-down ms-2"></i
+                  ></span>
+                </li>
+                <li class="nav-item">
+                  <span class="nav-link" href="">{{'SAFE_TRANSACTION_PRINCIPLES' | translate}}</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="navbar-right-btn d-flex">
+            <div class="login-container m-0 p-0" (mouseenter)="loginDrop = true"
+                 (mouseleave)="loginDrop = false">
+              <button class="btn nav-btn d-flex" id="loginDrop" >
+                <i class="bi bi-box-arrow-in-right me-xl-2"></i>
+                <span class="nav-btn-text m-0 p-0 d-xl-block d-none">
+                {{'LOG_IN' | translate}}
+              </span>
+              </button>
+              <ul *ngIf="loginDrop" class="login-list" id="login-list">
+                <li>
+                  <a href="/auth" class="login-link">
+                    <div class="login-link-content">
+                      <div class="app">
+                        <p>VCB Digibank</p>
+                      </div>
+                      <div class="customer">
+                        <p>Khách hàng cá nhân</p>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="" class="login-link">
+                    <div class="login-link-content">
+                      <div class="app">
+                        <p>VCB DigiBiz</p>
+                      </div>
+                      <div class="customer">
+                        <p>Khách hàng SME</p>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="login-link">
+                    <div class="login-link-content">
+                      <div class="app">
+                        <p>VCB - i&#64;Banking</p>
+                      </div>
+                      <div class="customer">
+                        <p>Khách hàng Tổ chức</p>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="login-link">
+                    <div class="login-link-content">
+                      <div class="app">
+                        <p>VCB Cashup</p>
+                      </div>
+                      <div class="customer">
+                        <p>Khách hàng Tổ chức</p>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+
+            <button
+              class="navbar-toggler d-xl-none d-block"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarText"
+              aria-controls="navbarText"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+              style="color: #074c31"
+              (click)="this.smNavDrop = true"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </div>
+</div>
+
+<!-- Mega Menu -->
+<app-nav-level-2></app-nav-level-2>
+
+<router-outlet></router-outlet>
+
+<div *ngIf="this.smNavDrop" class="toggle-nav-container">
+  <div class="toggle-nav">
+    <div class="toggle-nav-header">
+      <div class="toggle-nav-close" (click)="this.smNavDrop = false">
+        <i class="bi bi-x-lg"></i>
+      </div>
+    </div>
+
+    <div class="toggle-nav-body">
+      <div class="view-mode">
+        <div class="active-mode" (click)="this.smMenuDrop = !this.smMenuDrop">
+          <img src="./imgs/KHCN.svg" alt="">
+          <div class="active-mode-content">
+            <p>Bạn đang muốn truy cập:</p>
+            <p>Cá nhân</p>
+          </div>
+          <div class="arrow" [ngClass]="this.smMenuDrop ? 'rotate' : ''">
+            <i class="bi bi-caret-down-fill"></i>
+          </div>
+        </div>
+        @if (this.smMenuDrop){
+          <div class="default-hide" [ngClass]="this.smMenuDrop ? 'active' : ''">
+            <div class="view-mode-list-title">
+              <p>Bạn muốn chuyển sang:</p>
+            </div>
+
+            <div class="view-mode-item">
+              <img src="./imgs/KHDN.svg" alt="">
+              <p>Khách hàng doanh nghiệp</p>
+            </div>
+
+            <div class="view-mode-item">
+              <img src="./imgs/KHUT.svg" alt="">
+              <p>Khách hàng ưu tiên</p>
+            </div>
+
+            <div class="view-mode-item">
+              <img src="./imgs/SME.svg" alt="">
+              <p>Khách hàng SME</p>
+            </div>
+
+            <div class="view-mode-item">
+              <img src="./imgs/DCTC.svg" alt="">
+              <p>Định chế tài chính</p>
+            </div>
+          </div>
+        }
+      </div>
+
+      <div class="toggle-nav-list">
+        <div class="toggle-nav-item">
+          <p>Sản phẩm & Dịch vụ</p>
+          <i class="bi bi-chevron-right"></i>
+        </div>
+
+        <div class="toggle-nav-item">
+          <p>Công cụ & Tiện ích</p>
+          <i class="bi bi-chevron-right"></i>
+        </div>
+
+        <div class="toggle-nav-item">
+          <p>Liên hệ & Hỗ trợ</p>
+          <i class="bi bi-chevron-right"></i>
+        </div>
+
+        <div class="toggle-nav-item">
+          <p>Giao dịch an toàn</p>
+        </div>
+      </div>
+
+      <div class="toggle-nav-footer">
+        <div class="footer-item">
+          <p>Về Vietcombank</p>
+        </div>
+
+        <div class="footer-item">
+          <p>Tin tức</p>
+        </div>
+
+        <div class="footer-item">
+          <p>Nhà đầu tư</p>
+        </div>
+
+        <div class="footer-item">
+          <p>Mạng lưới</p>
+        </div>
+
+        <div class="footer-item">
+          <p>Tuyển dụng</p>
+        </div>
+
+        @if (this.language == 'vi'){
+          <div class="footer-item" (click)="this.smLangDrop = !this.smLangDrop">
+            <img src="./imgs/vietnam.png" alt="">
+            <span>VI</span>
+            <div class="arrow" [ngClass]="this.smLangDrop ? 'rotate' : ''">
+              <i class="bi bi-chevron-down"></i>
+            </div>
+          </div>
+
+          <div *ngIf="smLangDrop" class="footer-item" (click)="switchLanguage('en')">
+            <img src="./imgs/united-kingdom.png" alt="">
+            <span>EN</span>
+          </div>
+        } @else if (this.language == 'en'){
+          <div class="footer-item" (click)="this.smLangDrop = !this.smLangDrop">
+            <img src="./imgs/united-kingdom.png" alt="">
+            <span>EN</span>
+            <div class="arrow" [ngClass]="this.smLangDrop ? 'rotate' : ''">
+              <i class="bi bi-chevron-down"></i>
+            </div>
+          </div>
+
+          <div *ngIf="smLangDrop" class="footer-item" (click)="switchLanguage('vi')">
+            <img src="./imgs/vietnam.png" alt="">
+            <span>VI</span>
+          </div>
+        }
+
+        <div class="footer-btn">
+          <p>1900545413</p>
+        </div>
+
+        <div class="footer-btn">
+          <p>Tải VCB Digibank</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

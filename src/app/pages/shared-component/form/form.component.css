@@ -1,0 +1,80 @@
+form{
+  width: 50%;
+  max-width: 40rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  grid-gap: 16px;
+  padding: 24px;
+  background: var(--color-white);
+  border-radius: 1rem;
+}
+
+form .header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+form .header i{
+  cursor: pointer;
+  transition: transform 0.5s ease;
+}
+
+form .header i:hover{
+  transform: scale(1.2);
+}
+
+form div{
+  display: flex;
+  justify-content: space-between;
+}
+
+form div label{
+  font-weight: 600;
+  color: var(--color-black);
+}
+
+form div .input-container{
+  width: 60%;
+  justify-content: right;
+  display: flex;
+  flex-direction: column;
+}
+
+form div .input-container input,
+form div .input-container select,
+form div .input-container textarea{
+  width: 100%;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--color-grey-light);
+  border-radius: 0.5rem;
+  background-color: transparent;
+  color: var(--color-black);
+}
+
+form div .input-container select option:hover{
+  background: var(--gradient-hover-bg);
+}
+
+form div span{
+  color: red;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  margin-left: 0.5rem;
+}
+
+form button{
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  background: var(--backgroundImage-buttonPrimary);
+  color: var(--color-white);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+form button:disabled{
+  opacity: 0.5;
+  cursor: not-allowed;
+}

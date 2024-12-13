@@ -1,0 +1,75 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="header">
+    <h2>{{this.header}}</h2>
+    <i class="bi bi-x-lg" (click)="this.formCancel.emit()"></i>
+  </div>
+  <div *ngFor="let field of fields">
+    <label [for]="field.name">{{ field.label }} </label>
+
+    <div class="input-container">
+      <!-- Input field -->
+      <ng-container [ngSwitch]="field.type">
+        <input
+          *ngSwitchCase="'text'"
+          [id]="field.name"
+          [formControlName]="field.name"
+          [pattern]="field.pattern || '.*'"
+          type="text"
+        />
+
+        <textarea
+          *ngSwitchCase="'textArea'"
+          [id]="field.name"
+          [formControlName]="field.name"
+          style="height: 10rem;"
+          type="text"></textarea>
+
+        <input
+          *ngSwitchCase="'password'"
+          [id]="field.name"
+          [formControlName]="field.name"
+          [pattern]="field.pattern || '.*'"
+          type="password"
+        />
+
+        <input
+          *ngSwitchCase="'email'"
+          [id]="field.name"
+          [formControlName]="field.name"
+          type="email"
+        />
+
+        <input
+          *ngSwitchCase="'number'"
+          [id]="field.name"
+          [formControlName]="field.name"
+          type="number"
+        />
+
+        <!-- Dropdown field -->
+        <select
+          *ngSwitchCase="'dropdown'"
+          [id]="field.name"
+          [formControlName]="field.name">
+          <option *ngFor="let option of  field.options" [value]="option">
+            {{ option }}
+          </option>
+        </select>
+      </ng-container>
+
+      <!-- Validation errors -->
+      <div *ngIf="form.get(field.name)?.invalid && form.get(field.name)?.touched">
+        <span *ngIf="form.get(field.name)?.errors?.['required']"><i>This field is required.</i></span>
+        <span *ngIf="form.get(field.name)?.errors?.['email']"><i>Invalid email format.</i></span>
+        <span *ngIf="form.get(field.name)?.errors?.['minlength']">
+          <i>
+            Minimum length is {{ getMinLength(field.validators) }}.
+          </i>
+          </span>
+        <span *ngIf="form.get(field.name)?.errors?.['pattern']"><i>Birthday must be in the format YYYY-MM-DD</i></span>
+      </div>
+    </div>
+  </div>
+
+  <button type="submit" [disabled]="form.invalid">{{this.btnContent}}</button>
+</form>

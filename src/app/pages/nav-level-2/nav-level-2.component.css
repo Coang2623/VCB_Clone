@@ -1,0 +1,61 @@
+.mega-menu-section{
+  position: absolute;
+  width: 100%;
+  z-index: 100;
+  background-color: white;
+  height: max-content;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+
+  .container{
+    .col-4{
+      border: 2px solid rgba(255, 255, 255, .2) !important;
+    }
+  }
+
+  ul{
+    padding-top: 2.5rem !important;
+    list-style-type: none;
+    width: 100%;
+
+
+    .level-2{
+      border-radius: 8px;
+      padding: 1rem;
+    }
+
+    .level-2 a{
+      text-decoration: none;
+      display: block;
+      color: rgba(0, 0, 0, .8);
+      font-family: "Manrope Medium", sans-serif;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 1.125rem;
+      line-height: 1.5rem;
+    }
+
+    .level-2:hover{
+      background: linear-gradient(343deg, #eaf6ff 0, #f3ffe9 100%) !important;
+      width: 100%;
+    }
+  }
+
+  .promotion{
+    padding-top: 2.5rem !important;
+    background: #fafafa;
+    height: inherit;
+    border-right:  1px solid rgba(255, 255, 255, .2);
+
+    .promotion-tittle{
+      color: rgba(0, 0, 0, 0.4);
+      font-weight: 500;
+    }
+
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .col-xxl-8 {
+    min-width: 80rem !important;
+  }
+}

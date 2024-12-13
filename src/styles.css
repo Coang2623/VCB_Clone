@@ -2,45 +2,124 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
 
+
 :root{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    --text-hover-color: #074c31;
-    height: 100%;
+
+  --backgroundImage-buttonPrimary: radial-gradient(300.55% 959.41% at 293.35% -237.5%, #00502F 0%, #0A6F47 67.24%, #629F0D 98.3%);
+
+  --font-family-main: 'Manrope', sans-serif;
+  --color-text-white: #000;
+  --color-overlay: rgba(0, 0, 0, 0.2);
+  --secondary-nav-text-hover-color: #074c31;
+  --bs-suggestion-hover-bg: linear-gradient(343deg, #eaf6ff 0, #f3ffe9 100%);
+
+  --spacing-zero: 0;
+
+  /* Colors */
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-secondary-hover: #074c31;
+  --color-grey-light: #dde1e1;
+  --color-grey-dark: #475260;
+  --color-accent: #a7bf50;
+  --color-accent-gradient: linear-gradient(343deg, #eaf6ff 0%, #f3ffe9 100%);
+  --color-grey-dark: rgba(0, 0, 0, 0.8);
+  --color-grey-muted: rgba(0, 0, 0, 0.4);
+  --color-accent-bg: #fafafa;
+  --color-border-light: rgba(255, 255, 255, 0.2);
+
+  --light: #f6f6f9;
+  --primary: #a7bf50;
+  --light-primary: #CFE8FF;
+  --grey: #eee;
+  --dark-grey: #AAAAAA;
+  --dark: #363949;
+  --danger: #D32F2F;
+  --light-danger: #FECDD3;
+  --warning: #FBC02D;
+  --light-warning: #FFF2C6;
+  --success: #388E3C;
+  --light-success: #BBF7D0;
+
+  /* Gradients */
+  --gradient-hover-bg: linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), linear-gradient(343deg, #EAF6FF 0%, #F3FFE9 100%);
+
+  /* Typography */
+  --font-family-medium: "Manrope Medium", sans-serif;
+  --font-family-semibold: "Manrope SemiBold", sans-serif;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.1rem;
+  --font-size-md: 1.125rem;
+  --line-height-base: 1.5rem;
+  --letter-spacing-sm: -0.02em;
+
+  /* Z-index */
+  --z-index-top: 99999;
+  --z-index-overlay: 0000;
+  --z-index-primary: 10;
+  --z-index-dropdown: 100;
+
+  /* Borders */
+  --border-radius-sm: 5px;
+  --border-radius-lg: 8px;
+  --border-light: 1px solid rgba(255, 255, 255, 0.2);
+
+  /* Spacing */
+  --padding-sm: 0.25rem;
+  --padding-md: 0.75rem;
+  --padding-lg: 1.5rem;
+  --margin-sm: 0.5rem;
+  --margin-md: 1rem;
+  --margin-lg: 1.25rem;
+  --padding-xs: 0.5rem;
+
+  /* Dimensions */
+  --navbar-brand-height: 2.5rem;
+  --col-xxl-min-width: 80rem;
+
+  /* Typography */
+  --font-weight-semibold: 600;
+  --font-weight-medium: 500;
+
+  /* Borders */
+  --border-radius-md: 8px;
+
+  /* Aspect ratio */
+  --aspect-ratio-promotion: 3 / 2;
+  margin: 0;
+  padding: 0;
 }
 
-.video-bg {
-  position: absolute; /* Vị trí tuyệt đối */
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Căn chỉnh video */
-  z-index: -1; /* Đặt video ở phía sau các phần tử khác */
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.overlay{
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
+html, body {
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.2); /* Màu đen mờ, điều chỉnh độ trong suốt tại đây */
-  z-index: -1; /* Lớp phủ nằm trên video */
+  overflow: hidden;
+}
+
+a{
+  text-decoration: none;
+}
+
+p{
+  margin: 0;
+}
+
+ul{
+  list-style-type: none;
 }
 
 body{
-    /*background-image: url(../public/imgs/BANNER-WEB-1920X1080\ anh\ tinh.webp);
-    /*background-size: cover; /* Đảm bảo hình ảnh phủ đầy chiều ngang */
-    /*background-position: center center; /* Căn giữa theo cả chiều ngang và dọc */
-    /*background-repeat: no-repeat; /* Không lặp lại hình ảnh */
-    /*background-attachment: fixed; */
-    color: #000;
-    font-family: Manrope, sans-serif;
-    font-size: 1rem;
-    line-height: 1.5;
-    position: relative;
-    overflow: hidden;
-    height: 100%;
+  color: #000;
+  font-family: Manrope, sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  max-height: 100%;
 }

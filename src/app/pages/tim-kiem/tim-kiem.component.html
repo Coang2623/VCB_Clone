@@ -1,0 +1,181 @@
+<div class="overlay">
+  <div class="col-xxl-8">
+    <main>
+      <div class="search-container">
+
+        <div class="dropdown-toggle-btn">
+          <div class="selected-btn" (click)="toggleDrop = !toggleDrop">
+            <button>Khách hàng cá nhân</button>
+            <div class="arrow" [ngClass]="toggleDrop ? 'rotate' : ''">
+              <i class="bi bi-caret-down-fill"></i>
+            </div>
+          </div>
+
+          <div *ngIf="toggleDrop" class="content-list" [ngClass]="toggleDrop ? 'active' : ''">
+            <button class="active">Khách hàng cá nhân</button>
+            <button>Khách hàng tổ chức</button>
+            <button>Khách hàng ưu tiên</button>
+            <button>Tất cả</button>
+          </div>
+        </div>
+
+        <div class="search-box-container">
+          <div class="search-box">
+            <i class="bi bi-search" (click)="this.searchArticle()"></i>
+            <input
+              type="text"
+              placeholder="Tìm kiếm"
+              id="search"
+              #search="ngModel"
+              [(ngModel)]="this.searchValue"
+              (keyup.enter)="searchArticle()"
+              (keyup)="this.searchValue.length < 3 ? this.searchValueValid = false : this.searchValueValid = true">
+            <i *ngIf="searchValue !== ''" class="bi bi-x-lg me-3" (click)="this.searchValue = ''" style="cursor: pointer"></i>
+          </div>
+          @if ((search.touched && this.searchValue.length < 3) || !this.searchValueValid) {
+            <i class="color-danger">Vui lòng nhập ít nhất 3 kí tự để tìm kiếm</i>
+          }
+        </div>
+      </div>
+
+      <div class="result-container">
+        <header>
+          <h5>Kết quả tìm kiếm</h5>
+          @if (searchValue !== '') {
+            <span>Có <i style="color: black">{{paginateObj.totalElements}}</i> kết quả tìm kiếm cho <i style="color: black">"{{this.searchValue}}"</i></span>
+          } @else if(searchValue === '') {
+            <span>Nhập từ khóa để tìm kiếm</span>
+          }
+          <div class="section-filter">
+            <div class="filter-item"
+                 (click)="sectionName = ''; searchArticle()"
+                 [ngClass]="sectionName === '' ? 'active' : ''">
+              <button>Tất cả</button>
+            </div>
+
+            <div *ngFor="let item of sectionList"
+                 class="filter-item"
+                 (click)="sectionName = item; searchArticle()"
+                 [ngClass]="sectionName === item ? 'active' : ''">
+              <button>{{item}}</button>
+            </div>
+
+          </div>
+        </header>
+
+        <div class="search-body">
+          <div class="search-result">
+            <div *ngFor="let item of articleList"
+                 class="search-item">
+              <h5>{{item.articleTitle}}</h5>
+              <p>{{item.articleSummary}}</p>
+              <a href="#" class="view-more">Xem chi tiết <i class="bi bi-chevron-right"></i></a>
+            </div>
+          </div>
+
+          <div class="promotion">
+            <img src="./imgs/Ket qua tim kiem_Goi y sp.jpg" alt="">
+            <div class="promotion-content">
+              <h4>Gợi ý sản phẩm</h4>
+              <span>Hãy để Vietcombank giúp bạn tìm sản phẩm dành cho cá nhân phù hợp nhất chỉ trong 02 phút</span>
+              <button>Gợi ý sản phẩm</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="line"></div>
+
+      <div class="pagination">
+        <i class="bi bi-chevron-left" (click)="searchArticle(page - 2, size)"></i>
+        <div class="paginate-body">
+          <input type="number"
+                 (keyup.enter)="searchArticle(this.page - 1, this.size)"
+                 [(ngModel)]="this.page"
+                 (blur)="searchArticle(this.page - 1, this.size)"
+                 min="1" max="{{this.paginateObj.totalPages}}" value="{{this.page}}">
+          <span>Trong tổng số {{this.paginateObj.totalPages}}</span>
+        </div>
+        <i class="bi bi-chevron-right" (click)="searchArticle(this.page, this.size)"></i>
+      </div>
+    </main>
+  </div>
+
+  <div class="bg-gray">
+    <div class="col-xxl-8">
+      <footer>
+        <div class="footer-group">
+          <div class="footer-item">
+            <h6>Cá nhân</h6>
+            <span>Dịch vụ tài khoản</span>
+            <span>Ngân hàng số</span>
+            <span>Thẻ</span>
+            <span>Vay</span>
+            <span>Tiết kiệm</span>
+            <span>Bảo hiểm</span>
+            <span>Đầu tư</span>
+            <span>Chuyển và nhận tiền</span>
+          </div>
+
+          <div class="footer-item">
+            <h6>Tổ chức</h6>
+            <span>Khách hàng SME</span>
+            <span>Khách hàng Doanh nghiệp</span>
+            <span>Định chế tài chính</span>
+          </div>
+
+          <div class="footer-item">
+            <h6>Khách hàng ưu tiên</h6>
+            <span>Sản phẩm chuyên biệt</span>
+            <span>Đặc quyền</span>
+            <span>Điều kiện tham gia</span>
+          </div>
+
+          <div class="footer-item">
+            <h6>Liên hệ & Hỗ trợ</h6>
+            <span>Liên hệ Chăm sóc Khách hàng</span>
+            <span>Đặt lịch hẹn</span>
+            <span>Nguyên tắc giao dịch an toàn</span>
+            <span>Mạng lưới</span>
+            <span>Đăng ký/Hủy Email quảng cáo</span>
+          </div>
+
+          <div class="footer-item">
+            <h6>Thông tin khác</h6>
+            <span>Về Vietcombank</span>
+            <span>Tin tức</span>
+            <span>Nhà đầu tư</span>
+            <span>Tuyển dụng</span>
+            <span>Tuyên bố tuân thủ</span>
+            <span>Bảo vệ dữ liệu cá nhân</span>
+          </div>
+
+          <div class="footer-item">
+            <h6>Tải VCB DigiBank</h6>
+            <div class="download">
+              <img src="./imgs/Apple Store Footer.svg" alt="">
+              <img src="./imgs/Google Play Footer.svg" alt="">
+            </div>
+
+            <div class="hotline">
+              <h6>Hotline</h6>
+              <h3>1900 54 54 13</h3>
+            </div>
+
+            <div class="contact-us">
+              <div class="content">
+                <span>Kết nối với chúng tôi:</span>
+              </div>
+              <div class="icon">
+                <i class="bi bi-facebook"></i>
+                <i class="bi bi-youtube"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+</div>
+
+

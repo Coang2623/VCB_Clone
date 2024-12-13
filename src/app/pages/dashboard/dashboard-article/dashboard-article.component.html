@@ -1,0 +1,157 @@
+<main>
+  <div class="header">
+    <div class="left">
+      <h1>Article management</h1>
+    </div>
+
+    <span href="#" class="createBtn" (click)="showCreateForm = !showCreateForm; showUpdateForm = false">
+      <i class="bx bx-plus-circle"></i>
+      <span>Create new Article</span>
+    </span>
+  </div>
+
+  <app-form
+    *ngIf="showCreateForm"
+    [fields]="articleCreateFormFields"
+    (formSubmit)="this.onCreateSubmit($event)"
+    (formCancel)="this.showCreateForm = false"
+    header="Create new article"
+    btnContent="Create"
+  >
+  </app-form>
+
+  <app-form
+    *ngIf="showUpdateForm"
+    [fields]="articleUpdateFormFields"
+    (formSubmit)="this.onUpdateSubmit($event)"
+    (formCancel)="this.showUpdateForm = false"
+    [data]="updateObj"
+    header="Edit article: {{updateObj.articleId}}"
+    btnContent="Save"
+  >
+  </app-form>
+
+  <div class="bottom-data">
+    <div class="orders">
+      <div class="header">
+        <i class="bx bx-receipt"></i>
+        <h3>User list</h3>
+
+        <div class="pagination">
+          <i class="bi bi-chevron-left" (click)="loadArticle(currentPage - 2, pageSize)"></i>
+          <div class="paginate-body">
+            <input type="number"
+                   (keyup.enter)="loadArticle(currentPage - 1, pageSize)"
+                   [(ngModel)]="this.currentPage"
+                   (blur)="loadArticle(currentPage - 1, pageSize)"
+                   min="1" max="{{this.paginate.totalPages}}" value="{{currentPage}}">
+            <span>/ {{this.paginate.totalPages}}</span>
+          </div>
+          <i class="bi bi-chevron-right" (click)="loadArticle(currentPage, pageSize)"></i>
+        </div>
+
+        <i class="bx bx-filter"></i>
+        <i class="bx bx-search"></i>
+      </div>
+
+      <div class="table-container">
+        <table>
+          <thead>
+          <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Summary</th>
+            <th>Author</th>
+            <th>Section name</th>
+            <th>Status</th>
+            <th>Created date</th>
+            <th>Created by</th>
+            <th>Last updated at</th>
+            <th>Last updated by</th>
+            <th>Tools</th>
+          </tr>
+          </thead>
+
+          <tbody>
+
+          <tr *ngFor="let item of paginate.content">
+            <td>
+              <p>{{item.articleId}}</p>
+            </td>
+
+            <td>{{ item.articleTitle }}</td>
+
+            <td>{{item.articleSummary}}</td>
+
+            <td>{{ item.articleAuthor }}</td>
+
+            <td>{{ item.articleSectionName }}</td>
+
+            <td>
+            <span class="status"
+                  [ngClass]="item.articleStatus == 'ACTIVE' ? 'active' :
+                                item.articleStatus == 'HIDDEN' ? 'disabled' : ''"
+            >
+              {{ item.articleStatus }}
+            </span>
+            </td>
+
+            <td>{{item.articleCreatedAt}}</td>
+
+            <td>{{item.articleCreatedBy}}</td>
+
+            <td>{{item.articleUpdatedAt}}</td>
+
+            <td>{{item.articleCreatedBy}}</td>
+
+            <td>
+              <div class="delete-btn" (click)="showConfirmModal = true; showUpdateForm = false; showCreateForm = false; deleteObj = item">
+                <i class="bx bx-trash"></i>
+              </div>
+              <div class="edit-btn" (click)="showUpdateForm = true; showCreateForm = false; updateObj = item">
+                <i class="bx bx-edit"></i>
+              </div>
+              @if (item.articleStatus == 'ACTIVE'){
+                <div class="edit-btn" (click)="showHideArticleConfirmModal = true; showCreateForm = false; updateObj = item">
+                  <i class='bx bx-low-vision'></i>
+                </div>
+              } @else if (item.articleStatus == 'HIDDEN'){
+                <div class="edit-btn" (click)="showActiveArticleConfirmModal = true; showCreateForm = false; updateObj = item">
+                  <i class='bx bx-show-alt' ></i>
+                </div>
+              }
+            </td>
+          </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</main>
+<app-confirm-modal
+  *ngIf="this.showConfirmModal"
+  (confirmed)="onDeleteSubmit()"
+  (canceled)="showConfirmModal = false"
+  title="Delete {{this.deleteObj.articleId}}"
+  message="Are you sure you want to delete this article?"
+>
+</app-confirm-modal>
+
+<app-confirm-modal
+  *ngIf="this.showHideArticleConfirmModal"
+  (canceled)="showHideArticleConfirmModal = false"
+  (confirmed)="changeStatus('HIDDEN')"
+  title="Disable {{this.updateObj.articleId}}"
+  message="Are you sure you want to hide this article?"
+>
+</app-confirm-modal>
+
+<app-confirm-modal
+  *ngIf="this.showActiveArticleConfirmModal"
+  (canceled)="showActiveArticleConfirmModal = false"
+  (confirmed)="changeStatus('ACTIVE')"
+  title="Enable {{this.updateObj.articleId}}"
+  message="Are you sure you want to publish this article?"
+>
+</app-confirm-modal>

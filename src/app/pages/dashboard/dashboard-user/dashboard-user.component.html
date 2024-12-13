@@ -1,0 +1,142 @@
+<main>
+  <div class="header">
+    <div class="left">
+      <h1>User management</h1>
+    </div>
+
+    <span href="#" class="createBtn" (click)="showCreateForm = !showCreateForm; showUpdateForm = false">
+      <i class="bx bx-plus-circle"></i>
+      <span>Create new user</span>
+    </span>
+  </div>
+
+  <app-form
+    *ngIf="showCreateForm"
+    [fields]="userFormFields"
+    (formSubmit)="this.onCreateSubmit($event)"
+    (formCancel)="this.showCreateForm = false"
+    header="Create new user"
+    btnContent="Create"
+  >
+  </app-form>
+
+  <app-form
+    *ngIf="showUpdateForm"
+    [fields]="userUpdateFormFields"
+    (formSubmit)="this.onUpdateSubmit($event)"
+    (formCancel)="this.showUpdateForm = false"
+    header="Edit user"
+    btnContent="Save"
+    [data]="userUpdate"
+  >
+  </app-form>
+
+  <div class="bottom-data">
+    <div class="orders">
+      <div class="header">
+        <i class="bx bx-receipt" (click)="loadUser()"></i>
+        <h3>User list</h3>
+        <i class="bx bx-filter"></i>
+        <i class="bx bx-search"></i>
+      </div>
+
+      <table>
+        <thead>
+        <tr>
+          <th>User Id</th>
+          <th>First name</th>
+          <th>Last name</th>
+          <th>Username</th>
+          <th>Birthday</th>
+          <th>Email</th>
+          <th>Role</th>
+          <th>Status</th>
+          <th>Tools</th>
+        </tr>
+        </thead>
+
+        <tbody>
+
+          <tr *ngFor="let item of list">
+            <td>
+              <p>{{item.userId}}</p>
+            </td>
+
+            <td>{{ item.userFirstName }}</td>
+
+            <td>{{item.userLastName}}</td>
+
+            <td>{{ item.userName }}</td>
+
+            <td>{{ item.userDateOfBirth }}</td>
+
+            <td>{{item.userEmail}}</td>
+
+            <td>
+              @if (item.roles.length == 0) {
+                <i>Null</i>
+              }
+              @for (role of item.roles; track role) {
+                {{role.roleName}}
+              }
+            </td>
+
+            <td>
+              <span class="status"
+                    [ngClass]="item.userStatus == 'ACTIVE' ? 'active' :
+                                item.userStatus == 'DISABLED' ? 'disabled' :
+                                  item.userStatus == 'DELETED' ? 'deleted' : ''">
+                {{item.userStatus}}
+              </span>
+            </td>
+
+            <td>
+              <div class="delete-btn" (click)="showConfirmModal = true; showUpdateForm = false; showCreateForm = false; deleteObj = item">
+                <i class="bx bx-trash"></i>
+              </div>
+              <div class="edit-btn" (click)="showUpdateForm = true; showCreateForm = false; userUpdate = item">
+                <i class="bx bx-edit"></i>
+              </div>
+              @if (item.userStatus == 'ACTIVE') {
+                <div class="disable-btn" (click)="showDisableUserConfirmModal = true; showUpdateForm = false; showCreateForm = false; userUpdate = item">
+                  <i class="bx bx-block"></i>
+                </div>
+              } @else {
+                <div class="active-btn" (click)="showActiveUserConfirmModal = true; showUpdateForm = false; showCreateForm = false; userUpdate = item">
+                  <i class='bx bx-check-circle'></i>
+                </div>
+              }
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</main>
+<app-confirm-modal
+  *ngIf="this.showConfirmModal"
+  (confirmed)="deleteUser()"
+  (canceled)="showConfirmModal = false"
+  title="Delete {{this.deleteObj.userName}}"
+  message="Are you sure you want to delete this user?"
+>
+</app-confirm-modal>
+
+<app-confirm-modal
+  *ngIf="this.showDisableUserConfirmModal"
+  (confirmed)="onDisableUserClick()"
+  (canceled)="showDisableUserConfirmModal = false"
+  title="Disable {{this.deleteObj.userName}}"
+  message="Are you sure you want to disable this user?"
+>
+</app-confirm-modal>
+
+<app-confirm-modal
+  *ngIf="this.showActiveUserConfirmModal"
+  (confirmed)="onActiveUserClick()"
+  (canceled)="showActiveUserConfirmModal = false"
+  title="Enable {{this.userUpdate.userName}}"
+  message="Are you sure you want to enable this user?"
+>
+</app-confirm-modal>

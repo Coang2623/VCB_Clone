@@ -1,0 +1,37 @@
+@if (dayOrNight){
+  <img class="img-bg" src="./imgs/login-day.jpg" alt="">
+} @else {
+  <img class="img-bg" src="./imgs/login-night.jpg" alt="">
+}
+
+<div class="overlay"></div>
+
+<div class="parent">
+  <div class="header">
+    @if (dayOrNight){
+      <img src="./imgs/Logo VCB no 60.webp" alt="VCB Logo">
+    } @else {
+      <img class="night-logo" src="./imgs/VCB Logo white.png" alt="VCB Logo">
+    }
+  </div>
+  <div class="form-container">
+    <form>
+      <div class="title">
+        <h1>VCB DigiBank</h1>
+        <p>Xin kính chào quý khách</p>
+      </div>
+      <div class="input-group">
+        <input type="text" class="" id="username" placeholder="Tên đăng nhập" name="username" [(ngModel)]="this.username">
+        <i class="bi bi-info-circle"></i>
+      </div>
+      <div class="input-group">
+        <input type="password" class="" id="password" placeholder="Mật khẩu" name="password" [(ngModel)]="this.password">
+        <i class="bi bi-eye"></i>
+      </div>
+      <div class="forget-password">
+        <a href="">Quên mật khẩu?</a>
+      </div>
+      <button type="submit" class="" (click)="btnLoginOnclick()">Đăng nhập</button>
+    </form>
+  </div>
+</div>

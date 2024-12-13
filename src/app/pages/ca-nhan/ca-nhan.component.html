@@ -1,0 +1,115 @@
+<div class="main-section row">
+  <div class="main-container col-xxl-8 col-xl-12 mx-auto">
+
+    <div class="row">
+      <div class="col-lg-4 col-12">
+        <div class="row">
+          <div class="greeting col-12 p-0 px-3 px-xxl-0 m-0 d-flex">
+            <img src="./imgs/im_80_afternoon.svg" alt="" />
+            <div class="greeting-content text-light">
+              @if (now.getHours() >= 6 && now.getHours() < 12){
+                <h1>{{'GOOD_MORNING' | translate}}</h1>
+              } @else if (now.getHours() >= 12 && now.getHours() < 18){
+                <h1>{{'GOOD_AFTERNOON' | translate}}</h1>
+              } @else {
+                <h1>{{'GOOD_EVENING' | translate}}</h1>
+              }
+              <p>{{'WHAT ARE YOU LOOKING FOR TODAY' | translate}}</p>
+            </div>
+          </div>
+        </div>
+        <div class="row w-100 px-3 px-xxl-0">
+          <div class="search col-12 p-0 m-0 d-none d-lg-flex">
+            <p class=" search-icon m-0 p-0"><i class="bi bi-search"></i></p>
+            <input type="email" readonly="true" class="form-control" name="home-search" [placeholder]="'SEARCH_PLACEHOLDER' | translate" (click)="this.searchDialogOpen = true">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="suggestion-container row m-0 mx-0 mx-lg-1 mx-xxl-0">
+      <div class="search-sm col-12 p-0 m-0 d-flex d-lg-none">
+        <p class=" search-icon m-0 p-0"><i class="bi bi-search"></i></p>
+        <input type="email" readonly="true" class="form-control" name="home-search" [placeholder]="'SEARCH_PLACEHOLDER' | translate" (click)="this.searchDialogOpen = true">
+      </div>
+      <div class="col-12 d-flex p-0">
+        <table class="w-100">
+          <tr>
+            <td class="suggestion-item border-end border-secondary">
+              <div class="suggestion-icon text-center py-2"><img src="./imgs/Goiysanpham.svg" alt=""></div>
+              <div class="suggesttion-tittle text-center pb-2">{{'PRODUCTS_FOR_YOU' | translate}}</div>
+            </td>
+            <td class="suggestion-item border-end border-secondary">
+              <div class="suggestion-icon text-center py-2"><img src="./imgs/Tinnoibat.svg" alt=""></div>
+              <div class="suggesttion-tittle text-center pb-2">{{'LATEST_NEWS' | translate}}</div>
+            </td>
+            <td class="suggestion-item border-end border-secondary">
+              <div class="suggestion-icon text-center py-2"><img src="./imgs/Datlichhen.svg" alt=""></div>
+              <div class="suggesttion-tittle text-center pb-2">{{'BOOK_AN_APPOINTMENT' | translate}}</div>
+            </td>
+            <td class="suggestion-item border-end border-secondary">
+              <div class="suggestion-icon text-center py-2"><img src="./imgs/Dangkytructuyen.svg" alt=""></div>
+              <div class="suggesttion-tittle text-center pb-2">{{'ONLINE_REGISTRATION' | translate}}</div>
+            </td>
+            <td class="suggestion-item">
+              <div class="suggestion-icon text-center py-2"><img src="./imgs/Uudai.svg" alt=""></div>
+              <div class="suggesttion-tittle text-center pb-2">{{'PROMOTIONS' | translate}}</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+@if (searchDialogOpen){
+  <div class="search-dialog-container">
+    <div class="search-dialog">
+      <div class="search-dialog-header">
+        <p>Tìm kiếm</p>
+        <i class="bi bi-x-lg" (click)="this.searchDialogOpen = false"></i>
+      </div>
+      <div class="search-dialog-body">
+        <div class="search-box">
+          <i class="bi bi-search"></i>
+          <input type="text"
+                 class=""
+                 name="searchValue"
+                 [placeholder]="'SEARCH_PLACEHOLDER' | translate"
+                 [(ngModel)]="this.searchValue"
+                 (keyup.enter)="onSearch()">
+        </div>
+
+        <p>Từ khóa gần đây</p>
+        <div class="recent-keyword-container">
+          <div class="recent-keyword" (click)="this.searchValue = 'Thẻ tín dụng'; onSearch()">Thẻ tín dụng</div>
+          <div class="recent-keyword" (click)="this.searchValue = 'Tiết kiệm'; onSearch()">Tiết kiệm</div>
+        </div>
+
+        <p>Các nhóm sản phẩm theo giai đoạn cuộc đời</p>
+        <div class="category-container">
+          <div class="category-item">
+            <div class="category-icon"><img src="./imgs/phattrien.webp" alt=""></div>
+            <div class="category-content">
+              <div class="category-title">Phát triển sự nghiệp</div>
+              <div class="category-info">Ngân hàng số, Tiết kiệm, Đầu tư</div>
+            </div>
+          </div>
+          <div class="category-item">
+            <div class="category-icon"><img src="./imgs/Building.webp" alt=""></div>
+            <div class="category-content">
+              <div class="category-title">Xây dựng tổ ẩm</div>
+              <div class="category-info">Vay, Bảo hiểm, Thẻ</div>
+            </div>
+          </div>
+          <div class="category-item">
+            <div class="category-icon"><img src="./imgs/LiveHealthy.webp" alt=""></div>
+            <div class="category-content">
+              <div class="category-title">Hoạch định hưu trí</div>
+              <div class="category-info">Tiết kiệm, Chuyển & nhận tiền, Bảo hiểm</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+}

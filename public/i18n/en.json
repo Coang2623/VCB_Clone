@@ -1,0 +1,29 @@
+{
+  "PERSONAL_BANKING": "Personal Banking",
+  "INSTITUTIONAL_BANKING": "Institutional Banking",
+  "PRIORITY_BANKING": "Priority Banking",
+  "ABOUT_US": "About Us",
+  "NEWS": "News",
+  "INVESTORS": "Investors",
+  "NETWORKS": "Networks",
+  "CAREERS": "Careers",
+
+  "PRODUCTS_&_SERVICES": "Products & Services",
+  "TOOLS_&_UTILITIES": "Tool & Utilities",
+  "CONTACT_&_SUPPORT": "Contact & Support",
+  "SAFE_TRANSACTION_PRINCIPLES": "Safe Transaction Principles",
+  "LOG_IN": "Log in",
+
+  "GOOD_MORNING": "Good Morning",
+  "GOOD_AFTERNOON": "Good Afternoon",
+  "GOOD_EVENING": "Good Evening",
+  "WHAT ARE YOU LOOKING FOR TODAY": "What are you looking for today?",
+
+  "SEARCH_PLACEHOLDER": "Credit cards, customer loans,...",
+
+  "PRODUCTS_FOR_YOU": "Products for you",
+  "LATEST_NEWS": "Latest news",
+  "BOOK_AN_APPOINTMENT": "Book an appointment",
+  "ONLINE_REGISTRATION": "Online registration",
+  "PROMOTIONS": "Promotions"
+}

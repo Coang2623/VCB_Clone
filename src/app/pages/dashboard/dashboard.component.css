@@ -1,0 +1,54 @@
+.parent{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+}
+
+.parent .bx{
+  font-size: 1.7rem;
+
+}
+
+.parent a{
+  text-decoration: none;
+}
+
+.parent li{
+  list-style: none;
+}
+
+.parent.dark{
+  --light: #181a1e;
+  --grey: #25252c;
+  --dark: #fbfbfb;
+}
+
+.parent{
+  background: var(--grey) !important;
+  overflow-x: hidden;
+}
+
+
+.content{
+  position: relative;
+  width: calc(100% - 230px);
+  left: 230px;
+  transition: all 0.3s ease;
+}
+
+.sidebar.close~.content{
+  width: calc(100% - 60px);
+  left: 60px;
+}
+
+@media screen and (max-width: 768px){
+  .content{
+    width: calc(100% - 60px);
+    left: 200px;
+  }
+
+}
+
+

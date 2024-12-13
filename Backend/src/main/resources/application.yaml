@@ -1,0 +1,31 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /vcb
+
+spring:
+  datasource:
+    url: "jdbc:mysql://localhost:3306/vcb_data"
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 123456
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.MySQLDialect
+    show-sql: true
+
+
+app:
+  password-salt: "1fe02e4d4e1f34b9a6b008986c1c1077"
+
+jwt:
+  signerKey: "y2C+zMAzTo9i5QvSb17RzKm31IicKAYMQFcDniIS07YjKkGpQYC80ppNRuWQZrp0"
+  valid-duration: 3600 #in second
+  refreshable-duration: 86400 #in second
+
+webdriver:
+  driver: chrome
+serenity:
+  outputDirectory: target/site/serenity

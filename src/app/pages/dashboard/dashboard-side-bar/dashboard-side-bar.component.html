@@ -1,0 +1,14 @@
+<div class="sidebar">
+  <a href="#" class="logo">
+    <img src="./vcb-logo.png">
+    <span class="logo-name">Dashboard</span>
+  </a>
+  <ul class="side-menu">
+    @for (item of this.sideBarList; track item) {
+      <li [ngClass]="activeLink === item ? 'active' : ''"><a [routerLink]="['/dashboard/', item]">{{item}}</a></li>
+    }
+  </ul>
+  <ul class="side-menu" (click)="onLogout($event)">
+    <li><a href="#" class="logout"><i class="bx bx-log-out"></i>Logout</a></li>
+  </ul>
+</div>

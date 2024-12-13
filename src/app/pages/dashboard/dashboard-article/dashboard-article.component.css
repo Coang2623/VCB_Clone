@@ -1,0 +1,197 @@
+main{
+  width: 100%;
+  padding: 36px 24px;
+  height: calc(100vh - 56px);
+  max-height: calc(100vh - 56px);
+}
+
+main .header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  grid-gap: 16px;
+  flex-wrap: wrap;
+}
+
+main .header .left h1{
+  font-size: 36px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: var(--dark);
+}
+
+main .header .createBtn{
+  height: 36px;
+  padding: 0 16px;
+  border-radius: 36px;
+  background: var(--primary);
+  color: var(--light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  grid-gap: 10px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+main .bottom-data{
+  display: flex;
+  flex-wrap: wrap;
+  grid-gap: 24px;
+  margin: 24px 0;
+  width: 100%;
+  color: var(--dark);
+}
+
+main .bottom-data>div{
+  border-radius: 20px;
+  background: var(--light);
+  padding: 24px;
+  overflow-x: hidden;
+}
+
+main .bottom-data .header{
+  display: flex;
+  align-items: center;
+  grid-gap: 16px;
+  margin-bottom: 24px;
+}
+
+main .bottom-data .header h3{
+  margin-right:  auto;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+main .bottom-data .header .bx{
+  cursor: pointer;
+}
+
+main .bottom-data .orders{
+  flex-grow: 1;
+  flex-basis: 500px;
+}
+
+main .bottom-data .orders .table-container{
+  overflow-x: scroll;
+}
+
+main .bottom-data .orders table{
+  width: max-content;
+  border-collapse: collapse;
+}
+
+main .bottom-data .orders table th{
+  padding-bottom: 12px;
+  font-size: 13px;
+  text-align: left;
+  border-bottom: 1px solid var(--grey);
+}
+
+main .bottom-data .orders table td{
+  padding: 16px 16px;
+}
+
+main .bottom-data .orders table tr td:first-child{
+  display: flex;
+  align-items: center;
+  grid-gap: 12px;
+  padding-left: 6px;
+}
+
+main .bottom-data .orders table tr td:last-child,
+main .bottom-data .orders table tr th:last-child{
+  position: sticky;
+  right: 0;
+  z-index: 1000;
+  text-align: center;
+  background: var(--light);
+}
+
+main .bottom-data .orders table tbody tr{
+  cursor: pointer;
+  transition: all .3s ease;
+}
+
+main .bottom-data .orders table tbody tr:hover{
+  background: var(--grey);
+}
+
+main .bottom-data .orders table tr td .status{
+  font-size: 10px;
+  padding: 6px 16px;
+  color: var(--light);
+  border-radius: 20px;
+  font-weight: 700;
+}
+
+main .bottom-data .orders table tr td .status.active{
+  background: var(--success);
+}
+
+main .bottom-data .orders table tr td .status.disabled{
+  background: var(--danger);
+}
+
+main .bottom-data .orders table tr td:last-child{
+  display: flex;
+  justify-content: space-around;
+}
+
+main .bottom-data .orders table tr td i{
+  transform: scale(1.4);
+  padding: .25rem;
+  border-radius: 25%;
+  background: var(--bs-gradient);
+}
+
+main .bottom-data .orders table tr td i:hover{
+  background: var(--color-accent);
+  color: var(--color-grey-light);
+}
+
+.pagination{
+  width: fit-content;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.pagination i{
+  cursor: pointer;
+  transition: transform .3s ease;
+}
+
+.pagination i:hover{
+  transform: scale(1.2);
+}
+
+.pagination span{
+  color: gray;
+}
+
+.paginate-body input{
+  width: 2rem;
+  text-align: center;
+  border: 1px solid var(--color-grey-light);
+  border-radius: .5rem;
+  margin: 0 .5rem;
+  color: var(--color-black);
+  outline: none;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0; /* Để loại bỏ khoảng cách mặc định */
+}
+
+@media  screen and (max-width: 576px){
+  main .bottom-data .header{
+    min-width: 340px;
+  }
+
+  main .bottom-data .orders table{
+    min-width: 340px;
+  }
+}
