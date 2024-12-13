@@ -8,21 +8,20 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @SpringBootTest
 @TestPropertySource("/test.properties")
-class UserEntityTest {
+class PermissionEntityTest {
+
   @Test
   void onCreate_shouldSetDefaultValues() {
-    User user = new User();
-    user.onCreate();
-
-    assertNotNull(user.getUserCreatedAt());
-    assertNotNull(user.getUserUpdatedAt());
+    Permission permission = new Permission();
+    permission.onCreate();
+    assertNotNull(permission.getPermissionCreatedAt());
+    assertNotNull(permission.getPermissionUpdatedAt());
   }
 
   @Test
   void onUpdate_shouldSetDefaultValues() {
-    User user = new User();
-    user.onUpdate();
-
-    assertNotNull(user.getUserUpdatedAt());
+    Permission permission = new Permission();
+    permission.onUpdate();
+    assertNotNull(permission.getPermissionUpdatedAt());
   }
 }

@@ -6,6 +6,7 @@ import com.vcb.backend.exception.AppError;
 import com.vcb.backend.exception.AppException;
 import com.vcb.backend.mapper.SectionMapper;
 import com.vcb.backend.repository.SectionRepository;
+import com.vcb.backend.service.AuthenticationService;
 import com.vcb.backend.service.SectionService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,9 @@ import java.util.List;
 @Slf4j
 @Service
 public class SectionServiceImpl implements SectionService {
+
+  @Autowired
+  private AuthenticationService authenticationService;
 
   @Autowired
   private SectionRepository sectionRepository;
@@ -94,6 +98,9 @@ public class SectionServiceImpl implements SectionService {
     Section section = new Section();
     sectionMapper.toCreateSection(section, sectionDto);
 
+    section.setSectionCreatedBy(authenticationService.getUsernameFromToken());
+    section.setSectionUpdatedBy(authenticationService.getUsernameFromToken());
+
     return sectionMapper.toSectionDtoBasicInfo(sectionRepository.save(section));
   }
 
@@ -112,6 +119,9 @@ public class SectionServiceImpl implements SectionService {
       .orElseThrow(() -> new AppException(AppError.SECTION_NOT_EXIST));
 
     sectionMapper.toUpdateSection(section, sectionDto);
+
+    section.setSectionUpdatedBy(authenticationService.getUsernameFromToken());
+
     return sectionMapper.toSectionDtoBasicInfo(sectionRepository.save(section));
   }
 
